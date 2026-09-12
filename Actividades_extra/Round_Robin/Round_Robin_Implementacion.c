@@ -32,9 +32,8 @@ void cargarProcesosEnCola(Cola colaDeProcesosVacia){
     
     while (i <= cantidadDeProcesos) {
         Proceso p = (Proceso) malloc(sizeof(struct ProcesoRep));
-        printf("Seleccione el 'PID' del proceso '%d': ", i);
-        p->PID = leer_entero("",1,1000);
-        printf("Seleccione el 'Tiempo de servicio' del proceso '%d': ", i);
+        p->PID = i;
+        printf("Seleccione el 'Tiempo de servicio' del proceso '%d': ", p->PID);
         p->tiempoDeServicio = leer_entero("",1,20);
         p->timepoDeServicioOriginal = p->tiempoDeServicio;
         p->tiempoDeLlegada = 0;
@@ -85,7 +84,9 @@ void planificadorRoundRobin(Cola colaDeProcesos, int totalDeTiempoDeServicio){
     int reloj = 0;
     Proceso procesoAnterior = NULL;
     Lista listaDeEsperaYRetornos = l_crear();
+    int rondas = 1;
     while (totalDeTiempoDeServicio > 0) {
+        printf("\n\n=============== RONDA: '%d' ===============", rondas);
         int cantidadTotalDeProcesos = c_tamanio(colaDeProcesos);
         for(int i = 1; i <= cantidadTotalDeProcesos; i++){
             TipoElemento tipo = c_desencolar(colaDeProcesos);
@@ -130,6 +131,7 @@ void planificadorRoundRobin(Cola colaDeProcesos, int totalDeTiempoDeServicio){
             }
             procesoAnterior = pActual;
         }
+        rondas += 1;
     }
     
     promediosDeEsperaYRetorno(listaDeEsperaYRetornos);
