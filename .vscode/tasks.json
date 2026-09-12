@@ -1,0 +1,36 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe compilar archivo activo",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "${fileDirname}\\Round_Robin_menu.c",
+                "${fileDirname}\\Round_Robin_Implementacion.c",
+                "${fileDirname}\\utilidades_colas.c",
+                "${workspaceFolder}\\libs\\validaciones\\implementaciones\\validacion_int.c",
+                "${workspaceFolder}\\libs\\colas\\implementaciones\\colas_punteros.c",
+                "${workspaceFolder}\\libs\\listas\\implementaciones\\listas_punteros.c",
+                "${workspaceFolder}\\libs\\tipoElemento\\implementaciones\\tipo_elemento.c",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tarea generada por el depurador."
+        }
+    ],
+    "version": "2.0.0"
+}
